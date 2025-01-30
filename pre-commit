@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# This prints alarming nonsense to the error message when triggered
+# TODO: figure out how to filter this out
+git fetch origin
+author=`git config user.name`
+branch=`git symbolic-ref -q --short HEAD`
+
+# Unfortunately neither --not nor ^ work as described in the git rev-list docs,
+# and for fragility reasons, we're avoiding --perl-regexp. Despite the hilarity of 
+# --author="foo", --not --author="foo", and --author="^(foo)" 
+# matching the exact same subset of commits, here we're just going with something simple and known to work
+countLocalOurs=`git rev-list main..HEAD --author="$author" | wc -l`
+countLocalTotal=`git rev-list main..HEAD | wc -l`
+countRemoteOurs=`git rev-list origin/main..origin/$branch --author="$author" | wc -l`
+countRemoteTotal=`git rev-list origin/main..origin/$branch | wc -l`
+count=$((countLocalTotal - countLocalOurs + countRemoteTotal - countRemoteOurs))
+exec 1>&2
+if (( $count > 0 ));
+then
+  echo "No committing to someone else's branch!"
+  exit 1
+fi
