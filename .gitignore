@@ -1,7 +1,13 @@
-/bin/
-.classpath
-.project
-.settings
+
+# Ignore Gradle project-specific cache directory
 .gradle
-build/
+
+# Ignore Gradle build output directory
+build
+gradle.zip
+.project
+.classpath
+bin
+.settings
 *.class
+pre-commit
