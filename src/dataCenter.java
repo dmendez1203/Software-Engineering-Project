@@ -1,6 +1,6 @@
-public class dataStorageCenter {
+public class dataCenter {
 
-	public void DS(Storage storage) {
+	public void DataStorage(Storage storage) {
 		@SuppressWarnings("unused")
 		StorageKey result = storage.storeData(new StorageRequest());
 
