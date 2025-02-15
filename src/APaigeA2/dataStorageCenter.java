@@ -1,14 +1,15 @@
 package A2;
 
 public class dataStorageCenter {
-	
-	public void DS(Storage storage ) {
+
+	public void DS(Storage storage) {
+		@SuppressWarnings("unused")
 		StorageKey result = storage.storeData(new StorageRequest());
-		
-		Object key;
+
+		StorageKey key = null;
+		@SuppressWarnings("unused")
 		dataSearch data = storage.retrieveData(key);
 		
 	}
 
 }
-//should be fixed

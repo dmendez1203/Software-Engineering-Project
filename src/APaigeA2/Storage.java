@@ -5,6 +5,6 @@ public interface Storage {
 
 	StorageKey storeData(StorageRequest storeageRequest);
 	
-	dataSearch retrieveData(Object key);
+	dataSearch retrieveData(StorageKey key);
 
 }
