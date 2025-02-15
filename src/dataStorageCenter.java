@@ -1,5 +1,3 @@
-package A2;
-
 public class dataStorageCenter {
 
 	public void DS(Storage storage) {
