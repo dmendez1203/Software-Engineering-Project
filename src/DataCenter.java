@@ -1,12 +1,12 @@
-public class dataCenter {
+public class DataCenter {
 
-	public void DataStorage(Storage storage) {
+	public void datastorage(Storage storage) {
 		@SuppressWarnings("unused")
 		StorageKey result = storage.storeData(new StorageRequest());
 
 		StorageKey key = null;
 		@SuppressWarnings("unused")
-		dataSearch data = storage.retrieveData(key);
+		DataSearch data = storage.retrieveData(key);
 		
 	}
 
