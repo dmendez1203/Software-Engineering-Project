@@ -13,7 +13,4 @@ public static String getStatus() {
 	//Empty implementation
 	return "";
 }
-
-
-	
 }
