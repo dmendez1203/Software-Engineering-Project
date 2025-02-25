@@ -1,5 +1,5 @@
 import project.annotations.ConceptualAPIPrototype;
-
+//create another class that will implement interface
 public class ComputeEngine {
 
     @ConceptualAPIPrototype
@@ -8,11 +8,7 @@ public class ComputeEngine {
         interface1.computeDouble(x);
     }
 
-    @ConceptualAPIPrototype
-    public static String getStatus() {
-        // Empty implementation
-        return "";
-    }
+  
 
 
 }
