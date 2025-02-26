@@ -1,7 +1,10 @@
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
+//implement network API
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions;
 
 public class ComputeEngineIntegrationTest {
 
