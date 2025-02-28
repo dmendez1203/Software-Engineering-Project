@@ -25,8 +25,7 @@ public class DataStoreFileAccessor {
 
 			System.out.println(
 				"File reading and writing both done");
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 
 			System.out.println(
 				"There are some IOException");
