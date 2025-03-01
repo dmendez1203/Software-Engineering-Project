@@ -1,6 +1,3 @@
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.;
-
 public class TestUserAPI {
     private UserAPI userAPI;
     private DataStoreAPI mockDataStoreAPI;
