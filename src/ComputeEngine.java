@@ -12,5 +12,3 @@ public class ComputeEngine {
 
 
 }
-//Consolidate this class with the ComputeEngine class, it seems redundant to have two classes that
-//do the same thing. Talk to Professor at office hours. 
