@@ -23,7 +23,7 @@ public class CoordinationEngine {
             }
 
             // Write the results to the output location
-            //dataStorage.writeResult(outputLocation, "Computation completed successfully.");
+            dataStorage.writeResult(outputLocation, "Computation completed successfully.");
 
             return "Computation completed successfully.";
         } catch (Exception e) {
