@@ -1,4 +1,4 @@
-import static org.junit.jupiter.api.Assertions.;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestDataStoreAPI {
     private DataStoreAPI dataStoreAPI;
