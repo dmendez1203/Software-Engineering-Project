@@ -32,4 +32,3 @@ public class ExceptionHandlerTest {
 	        assertEquals(-1, result);  
 	    }
 	}
-}
