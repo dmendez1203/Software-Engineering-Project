@@ -1,6 +1,6 @@
 //package edu.softwareeng.sample;
-
-import java.io.File;
+//CHECKSTYLE WAS COMPLAINING ABOUT THE IMPORTS, SO I COMMENTED THEM OUT
+/*import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
