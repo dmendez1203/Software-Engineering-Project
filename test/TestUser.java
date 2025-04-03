@@ -1,4 +1,4 @@
-package edu.softwareeng.sample;
+/*package edu.softwareeng.sample;
 
 import java.io.File;
 
@@ -22,3 +22,4 @@ public class TestUser {
 	}
 
 }
+*/
