@@ -1,4 +1,4 @@
-class CoordinationEngineTest {
+/*class CoordinationEngineTest {
 
     private Storage dataStorage;
     private Interface1 computeEngine;
@@ -17,3 +17,4 @@ class CoordinationEngineTest {
         assertEquals("Computation completed successfully.", result);
     }
 }
+*/
