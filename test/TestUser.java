@@ -22,7 +22,6 @@ public class TestUser {
 		///
 		///coordinator.startComputation(inputPath, outputPath, delimiter);
 		 */
-	}
+//	}
 
-}
-*/
+//}
