@@ -15,18 +15,20 @@ public class ValidateComputationTest {
 	@Test
 	public void testComputeDoubleWithZeroInput() {
 		Computation computation = new Computation();
-		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+		double result = computation.computeDouble(0);
+		assertEquals(-1, result, "Test message");
+		//Exception exception = assertThrows(IllegalArgumentException.class, () -> {
 			computation.computeDouble(0);
-		});
-		assertEquals("Input must be a positive integer.", exception.getMessage());
-	}
+		}
+		//assertEquals("Input must be a positive integer.", exception.getMessage());
 
 	@Test
 	public void testComputeDoubleWithNegativeInput() {
 		Computation computation = new Computation();
-		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+		double result = computation.computeDouble(-1);
+		assertEquals(-1,result, "Test message");
+		//Exception exception = assertThrows(IllegalArgumentException.class, () -> {
 			computation.computeDouble(-1);
-		});
-		assertEquals("Input must be a positive integer.", exception.getMessage());
+		}
+		//assertEquals("Input must be a positive integer.", exception.getMessage());
 	}
-}

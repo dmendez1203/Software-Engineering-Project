@@ -6,7 +6,8 @@ public class Computation implements Interface1 {
         try {
             // Validate that the input is a positive integer
             if (x <= 0) {
-                throw new IllegalArgumentException("Input must be a positive integer.");
+                //throw new IllegalArgumentException("Input must be a positive integer.");
+            	return -1; 
             }
 
             int sum = 0;
