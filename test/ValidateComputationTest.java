@@ -25,7 +25,7 @@ public class ValidateComputationTest {
 	public void testComputeDoubleWithNegativeInput() {
 		Computation computation = new Computation();
 		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-			computation.computeDouble(-5);
+			computation.computeDouble(-1);
 		});
 		assertEquals("Input must be a positive integer.", exception.getMessage());
 	}
