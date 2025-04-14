@@ -1,4 +1,4 @@
-/*package edu.softwareeng.sample;
+/*
 
 import java.io.File;
 
@@ -9,7 +9,7 @@ public class TestUser {
 	// @NetworkAPI interface; also update the parameter passed to the constructor
 	private final ComputationCoordinator coordinator;
 
-	public TestUser(ComputationCoordinator coordinator) {
+	public TestUser(CoordinationEngine coordinator) {
 		this.coordinator = coordinator;
 	}
 
@@ -19,7 +19,9 @@ public class TestUser {
 		
 		// TODO 4: Call the appropriate method(s) on the coordinator to get it to 
 		// run the compute job specified by inputPath, outputPath, and delimiter
-	}
+		///
+		///coordinator.startComputation(inputPath, outputPath, delimiter);
+		 */
+//	}
 
-}
-*/
+//}
