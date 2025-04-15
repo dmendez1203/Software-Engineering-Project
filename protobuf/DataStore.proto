@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+message SaveDataRequest {
+  optonal string data = 1;
+}
+
+message SaveDataResponse {
+  optional bool success = 1;
+}
+
+message FetchDataRequest {
+  optional string key = 1;
+}
+
+message FetchDataResponse {
+  optional string data = 1;
+}
+
+service DataStoreAPI {
+  rpc SaveData(SaveDataRequest) returns (SaveDataResponse);
+  rpc FetchData(FetchDataRequest) returns (FetchDataResponse);
+}
