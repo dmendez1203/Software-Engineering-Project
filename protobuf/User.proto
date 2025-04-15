@@ -1,0 +1,33 @@
+syntax = "proto2";
+
+option java_package = "your.package.name.grpc";  // adjust this
+option java_outer_classname = "UserProto";
+
+message UserInput {
+  required string input_data = 1;
+}
+
+message UserOutput {
+  optional string output_data = 1;
+}
+
+message ComputeRequest {
+  required UserInput user_input = 1;
+  optional UserOutput user_output = 2;
+  optional string delimiter = 3 [default = ";"];
+}
+
+message ComputeResult {
+  enum Status {
+    SUCCESS = 0;
+    INVALID_REQUEST = 1;
+    FAILURE = 2;
+  }
+
+  required Status status = 1;
+  optional string failure_message = 2;
+}
+
+service UserService {
+  rpc Compute(ComputeRequest) returns (ComputeResult);
+}
