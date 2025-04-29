@@ -1,4 +1,4 @@
-syntax = "proto2";
+package protobuf;
 
 message SaveDataRequest {
   optional string data = 1;
