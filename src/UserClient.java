@@ -22,13 +22,23 @@ public class UserClient {
     public void compute() {
     	Scanner scanner = new Scanner(System.in);
     	System.out.println("Enter your filename (Make sure it is 1 number per line): ");
-        protobuf.User.ComputeRequest request = protobuf.User.ComputeRequest.newBuilder()
+        protobuf.User.ComputeRequest.Builder request = protobuf.User.ComputeRequest.newBuilder()
         		.setUserInput(protobuf.User.UserInput.newBuilder()
-        		.setInputData(scanner.nextLine()))
-        		.build();
+        		.setInputData(scanner.nextLine()));
+  
+        System.out.println("Enter the output filename: ");
+        request.setUserOutput(protobuf.User.UserOutput.newBuilder()
+        		.setOutputData(scanner.nextLine()));
+        
+        System.out.println("Enter a delimiter (default is comma): ");
+        String delimiter = scanner.nextLine();
+		if (delimiter.isEmpty()) {
+			delimiter = ",";
+		}
+        	
         protobuf.User.ComputeResult result;
         try {
-            result = blockingStub.compute(request);
+            result = blockingStub.compute(request.build());
         } catch (StatusRuntimeException e) {
             e.printStackTrace();
             scanner.close();
