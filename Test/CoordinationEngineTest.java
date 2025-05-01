@@ -1,4 +1,8 @@
-/*class CoordinationEngineTest {
+/*import static org.junit.Assert.assertEquals;
+
+import org.mockito.MockitoAnnotations;
+
+class CoordinationEngineTest {
 
     private Storage dataStorage;
     private Interface1 computeEngine;
