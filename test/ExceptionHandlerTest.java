@@ -9,23 +9,7 @@ public class ExceptionHandlerTest {
 	       
 	        ExceptionHandler mockHandler = Mockito.mock(ExceptionHandler.class);
 	        
-	        Computation computation = new Computation() {
-	        	
-	            @Override
-	            public double computeDouble(int x) {
-	            	
-	                try {
-	                    if (x <= 0) {
-	                        throw new IllegalArgumentException("Input must be a positive integer.");
-	                    }
-	                    return super.computeDouble(x);
-	                    
-	                } catch (Exception e) {
-	                    mockHandler.handleException(e);  
-	                    return -1;
-	                }
-	            }
-	        };
+	        Computation2 computation = new Computation2(); 
 	        
 	        double result = computation.computeDouble(-1);
 	        
