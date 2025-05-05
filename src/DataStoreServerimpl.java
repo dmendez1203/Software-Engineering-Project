@@ -20,11 +20,11 @@ public interface AsyncService {
   }
 */
 
-import protobuf.UserServiceGrpc.DataStoreServiceImplBase;
+/*import protobuf.UserServiceGrpc.DataStoreServiceImplBase;
 
 public class DataStoreServerimpl extends DataStoreServiceImplBase{
 
-
+/*
 /*@Override
 public void compute(protobuf.User.ComputeRequest request,
         io.grpc.stub.StreamObserver<protobuf.User.ComputeResult> responseObserver) {

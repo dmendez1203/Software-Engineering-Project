@@ -1,4 +1,4 @@
-import java.util.Scanner;
+/*import java.util.Scanner;
 
 
 import java.util.concurrent.TimeUnit;
@@ -63,6 +63,7 @@ public class DataStoreClient {
        scanner.close();
     }
 */
+/*
     public static void main(String[] args) throws Exception {
         String target = "localhost:50051";  // Boilerplate TODO: make sure the server/port match the server/port you want to connect to
 
@@ -77,3 +78,4 @@ public class DataStoreClient {
     }
 
 }
+*/
