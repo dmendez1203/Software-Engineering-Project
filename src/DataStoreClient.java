@@ -1,49 +1,81 @@
-/*import java.util.concurrent.TimeUnit;
+/*import java.util.Scanner;
+
+
+import java.util.concurrent.TimeUnit;
 
 import io.grpc.Channel;
 import io.grpc.Grpc;
 import io.grpc.InsecureChannelCredentials;
 import io.grpc.ManagedChannel;
 import io.grpc.StatusRuntimeException;
-import phoneorder.PhoneOrder.PhoneOrderRequest;
-import phoneorder.PhoneOrder.PhoneOrderResponse;
-import phoneorder.PhoneOrderServiceGrpc;
-import phoneorder.PhoneOrderServiceGrpc.PhoneOrderServiceBlockingStub;
+import protobuf.DataStoreServiceGrpc;
+import protobuf.DataStoreServiceGrpc.UserServiceBlockingStub;
 
-public class PhoneOrderClient { // Boilerplate TODO: change to <servicename>Client
-    private final PhoneOrderServiceBlockingStub blockingStub; // Boilerplate TODO: update to appropriate blocking stub
+public class DataStoreClient { 
+    private final DataStoreServiceBlockingStub blockingStub; 
 
-    public PhoneOrderClient(Channel channel) {
-        blockingStub = PhoneOrderServiceGrpc.newBlockingStub(channel);  // Boilerplate TODO: update to appropriate blocking stub
+    public DataStoreClient(Channel channel) {
+        blockingStub = DataStoreServiceGrpc.newBlockingStub(channel);  // Boilerplate TODO: update to appropriate blocking stub
     }
 
     // Boilerplate TODO: replace this method with actual client call/response logic
-    public void order() {        
-        PhoneOrderRequest request = PhoneOrderRequest.newBuilder().setModel("android").setIncludeWarranty(true).build();
-        PhoneOrderResponse response;
+   /* public void compute() {
+    	Scanner scanner = new Scanner(System.in);
+    	System.out.println("Enter your filename (Make sure it is 1 number per line): ");
+        protobuf.User.ComputeRequest.Builder request = protobuf.User.ComputeRequest.newBuilder()
+        		.setUserInput(protobuf.User.UserInput.newBuilder()
+        		.setInputData(scanner.nextLine()));
+  
+        System.out.println("Enter the output filename: ");
+        request.setUserOutput(protobuf.User.UserOutput.newBuilder()
+        		.setOutputData(scanner.nextLine()));
+        
+        System.out.println("Enter a delimiter (default is comma): ");
+        String delimiter = scanner.nextLine();
+		if (delimiter.isEmpty()) {
+			delimiter = ",";
+		}
+        	
+        protobuf.User.ComputeResult result;
         try {
-            response = blockingStub.createPhoneOrder(request);
+            result = blockingStub.compute(request.build());
         } catch (StatusRuntimeException e) {
             e.printStackTrace();
-            return;
+            scanner.close();
+             return;
         }
-        if (response.hasErrorMessage()) {
-            System.err.println("Error: " + response.getErrorMessage());
-        } else {
-            System.out.println("Order number: " + response.getOrderNumber());
-        }
+       switch(result.getStatus()) {
+	case FAILURE:
+		System.err.println("Error: " + result.getFailureMessage());
+		break;
+	case INVALID_REQUEST:
+		System.err.println("Invalid Request: " + result.getFailureMessage());
+		break;
+	case SUCCESS:
+		System.err.println("Success!");
+		break;
+	default:
+		break;
+   
+       
+       
+       }
+       scanner.close();
     }
-
+*/
+/*
     public static void main(String[] args) throws Exception {
         String target = "localhost:50051";  // Boilerplate TODO: make sure the server/port match the server/port you want to connect to
 
         ManagedChannel channel = Grpc.newChannelBuilder(target, InsecureChannelCredentials.create())
                 .build();
         try {
-            UserClient client = new UserClient(channel); // Boilerplate TODO: update to this class name
+            DataStoreClient client = new DataStoreClient(channel); // Boilerplate TODO: update to this class name
             client.compute();
         } finally {
             channel.shutdownNow().awaitTermination(5, TimeUnit.SECONDS);
         }
     }
-}*/
+
+}
+*/

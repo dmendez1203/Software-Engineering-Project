@@ -6,7 +6,7 @@ import io.grpc.InsecureServerCredentials;
 import io.grpc.Server;
 import io.grpc.protobuf.services.ProtoReflectionService;
 
-public class PhoneOrderServer { // Boilerplate TODO: Change name of class
+public class DataStoreServer { // Boilerplate TODO: Change name of class
       private Server server;
 
       private void start() throws IOException {
@@ -14,7 +14,7 @@ public class PhoneOrderServer { // Boilerplate TODO: Change name of class
         int port = 50051; // Boilerplate TODO: Consider changing the port (only one server per port)
         //2 servers, 2 clients
         server = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())
-            .addService(new PhoneOrderServiceImpl()) // Boilerplate TODO: Change name of class
+            .addService(new DataStoreServiceImpl()) // Boilerplate TODO: Change name of class
             .addService(ProtoReflectionService.newInstance())
             .build()
             .start();
@@ -46,7 +46,7 @@ public class PhoneOrderServer { // Boilerplate TODO: Change name of class
       }
 
       public static void main(String[] args) throws Exception {
-          PhoneOrderServer server = new PhoneOrderServer(); // Boilerplate TODO: Change name of class
+          DataStoreServer server = new DataStoreServer(); // Boilerplate TODO: Change name of class
           server.start();
           server.blockUntilShutdown();
       }
