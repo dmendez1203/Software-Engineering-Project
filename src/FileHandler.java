@@ -21,7 +21,7 @@ public class FileHandler {
     }
 
     public static void writeDoubleToFile(double value, String filename) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename,true))) {
             writer.write(Double.toString(value));
             System.out.println("Double value written to file successfully.");
         } catch (IOException e) {
