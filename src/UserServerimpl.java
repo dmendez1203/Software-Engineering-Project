@@ -1,38 +1,51 @@
-/* 
-public interface AsyncService {
+public class UserServerImpl extends UserServiceImplBase {
+    private final UserInterface engine;
 
-    
-    default void compute(protobuf.User.ComputeRequest request,
-        io.grpc.stub.StreamObserver<protobuf.User.ComputeResult> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getComputeMethod(), responseObserver);
+    public UserServerImpl(UserInterface engine) {
+        this.engine = engine;
     }
-  }
 
-  
-    Base class for the server implementation of the service UserService.
-   
-  public static abstract class UserServiceImplBase
-      implements io.grpc.BindableService, AsyncService {
+    // Local implementation of UserInput
+    private static class UserInputImpl implements UserInput {
+        private final String inputLocation;
+        private final String outputLocation;
 
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return UserServiceGrpc.bindService(this);
+        public UserInputImpl(String inputLocation, String outputLocation) {
+            this.inputLocation = inputLocation;
+            this.outputLocation = outputLocation;
+        }
+
+        @Override
+        public String getInputLocation() {
+            return inputLocation;
+        }
+
+        @Override
+        public String getOutputLocation() {
+            return outputLocation;
+        }
     }
-  }
-*/
 
-import protobuf.UserServiceGrpc.UserServiceImplBase;
+    @Override
+    public void compute(User.ComputeRequest request,
+                        StreamObserver<User.ComputeResult> responseObserver) {
+        try {
+            UserInput userInput = new UserInputImpl(
+                request.getUserInput(),
+                request.getUserOutput()
+            );
 
-public class UserServerimpl extends UserServiceImplBase{
-	UserInterface engine;
+            ComputeRequest localRequest = new ComputeRequest(userInput);
+            ComputeResult result = engine.compute(localRequest);
 
-@Override
-public void compute(protobuf.User.ComputeRequest request,
-        io.grpc.stub.StreamObserver<protobuf.User.ComputeResult> responseObserver) {
+            User.ComputeResult grpcResult = User.ComputeResult.newBuilder()
+                .setMessage("Computation finished.")
+                .build();
+
+            responseObserver.onNext(grpcResult);
+            responseObserver.onCompleted();
+        } catch (Exception e) {
+            responseObserver.onError(e);
+        }
+    }
 }
-
-
-
-
-
-
-} 
