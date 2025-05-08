@@ -23,7 +23,7 @@ public interface AsyncService {
 import protobuf.UserServiceGrpc.UserServiceImplBase;
 
 public class UserServerimpl extends UserServiceImplBase{
-
+	UserInterface engine;
 
 @Override
 public void compute(protobuf.User.ComputeRequest request,

@@ -25,6 +25,8 @@ public class UserClient {
         protobuf.User.ComputeRequest.Builder request = protobuf.User.ComputeRequest.newBuilder()
         		.setUserInput(protobuf.User.UserInput.newBuilder()
         		.setInputData(scanner.nextLine()));
+          
+        
   
         System.out.println("Enter the output filename: ");
         request.setUserOutput(protobuf.User.UserOutput.newBuilder()
@@ -35,7 +37,7 @@ public class UserClient {
 		if (delimiter.isEmpty()) {
 			delimiter = ",";
 		}
-        	
+		request.setDelimiter(delimiter);
         protobuf.User.ComputeResult result;
         try {
             result = blockingStub.compute(request.build());

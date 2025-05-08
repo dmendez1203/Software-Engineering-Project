@@ -5,7 +5,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class CoordinationEngine {
+/* public class CoordinationEngine implements UserInterface {
 
 	private Storage dataStorage;
 	private Interface1 computeEngine;
@@ -44,4 +44,10 @@ public class CoordinationEngine {
 			executor.shutdown();
 		}
 	}
+	@Override
+	public ComputeResult compute(ComputeRequest request) {
+		startComputation(request.getUserInput() , request.getUserOutput());
+		return null;
+	} 
 }
+*/
