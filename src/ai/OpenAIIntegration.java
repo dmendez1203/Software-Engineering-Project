@@ -1,3 +1,4 @@
+
 package ai;
 
 import java.net.HttpURLConnection;
@@ -8,9 +9,17 @@ import java.nio.charset.StandardCharsets;
 
 public class OpenAIIntegration {
     private final String apiKey;
+    private HttpURLConnection connection;
 
     public OpenAIIntegration(String apiKey) {
         this.apiKey = apiKey;
+        
+    }
+
+    // Constructor for testing with a mock connection
+    public OpenAIIntegration(String apiKey, HttpURLConnection connection) {
+        this.apiKey = apiKey;
+        this.connection = connection;
     }
 
     public String getAIResponse(String prompt, String model, int maxTokens) throws Exception {
@@ -22,7 +31,7 @@ public class OpenAIIntegration {
         byte[] postData = requestData.getBytes(StandardCharsets.UTF_8);
 
         URL url = new URL(endpoint);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        HttpURLConnection conn = (connection != null) ? connection : (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");
         conn.setRequestProperty("Authorization", "Bearer " + apiKey);
         conn.setRequestProperty("Content-Type", "application/json");
