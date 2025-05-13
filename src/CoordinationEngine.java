@@ -1,16 +1,20 @@
 
-import java.util.List;
+/*import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-/* public class CoordinationEngine implements UserInterface {
+import ai.OpenAIIntegration;
+ public class CoordinationEngine implements UserInterface {
 
 	private Storage dataStorage;
 	private Interface1 computeEngine;
-
+	private final OpenAIIntegration openAIIntegration;
+	
 	public CoordinationEngine(Storage dataStorage, Interface1 computeEngine) {
+		OpenAIIntegration aintegration = null;
+		this.openAIIntegration = aintegration;
 		this.dataStorage = dataStorage;
 		this.computeEngine = computeEngine;
 	}
@@ -48,6 +52,19 @@ import java.util.concurrent.Future;
 	public ComputeResult compute(ComputeRequest request) {
 		startComputation(request.getUserInput() , request.getUserOutput());
 		return null;
-	} 
+	}
+
+	public String startComputation(String inputLocation, String outputLocation, char delimiter) {
+		// Implementation for handling the delimiter and starting computation
+		return startComputation(inputLocation, outputLocation);
+	}
+	  public String generateSummary(String input, OpenAIIntegration aiIntegration) {
+	        try {
+	            String prompt = "Summarize the following computation results: " + input;
+	            return aiIntegration.getAIResponse(prompt, "text-davinci-003", 100);
+	        } catch (Exception e) {
+	            return "Error generating summary: " + e.getMessage();
+	        }
+	    }
 }
 */
