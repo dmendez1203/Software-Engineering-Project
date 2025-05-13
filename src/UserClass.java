@@ -7,6 +7,18 @@ public class UserClass {
 		public void prototype(UserInterface apiToCall) {
 			
 			UserInput userInput = new UserInput() {
+
+				@Override
+				public String getInputLocation() {
+					// TODO Auto-generated method stub
+					return null;
+				}
+
+				@Override
+				public String getOutputLocation() {
+					// TODO Auto-generated method stub
+					return null;
+				}
 			};
 			UserOutput userOutput = null;
 			ComputeRequest request = new ComputeRequest(userInput, userOutput, ',');
