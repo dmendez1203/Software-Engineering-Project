@@ -1,6 +1,11 @@
-/*import java.util.Scanner;
-
-
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 import io.grpc.Channel;
@@ -8,74 +13,65 @@ import io.grpc.Grpc;
 import io.grpc.InsecureChannelCredentials;
 import io.grpc.ManagedChannel;
 import io.grpc.StatusRuntimeException;
-import protobuf.DataStoreServiceGrpc;
-import protobuf.DataStoreServiceGrpc.UserServiceBlockingStub;
+import protobuf.DataStoreAPIGrpc;
+import protobuf.DataStoreAPIGrpc.DataStoreAPIBlockingStub;
 
-public class DataStoreClient { 
-    private final DataStoreServiceBlockingStub blockingStub; 
 
-    public DataStoreClient(Channel channel) {
-        blockingStub = DataStoreServiceGrpc.newBlockingStub(channel);  // Boilerplate TODO: update to appropriate blocking stub
-    }
+public class DataStoreClient implements Storage { 
+	
+    private final DataStoreAPIBlockingStub blockingStub; 
 
-    // Boilerplate TODO: replace this method with actual client call/response logic
-   /* public void compute() {
-    	Scanner scanner = new Scanner(System.in);
-    	System.out.println("Enter your filename (Make sure it is 1 number per line): ");
-        protobuf.User.ComputeRequest.Builder request = protobuf.User.ComputeRequest.newBuilder()
-        		.setUserInput(protobuf.User.UserInput.newBuilder()
-        		.setInputData(scanner.nextLine()));
-  
-        System.out.println("Enter the output filename: ");
-        request.setUserOutput(protobuf.User.UserOutput.newBuilder()
-        		.setOutputData(scanner.nextLine()));
-        
-        System.out.println("Enter a delimiter (default is comma): ");
-        String delimiter = scanner.nextLine();
-		if (delimiter.isEmpty()) {
-			delimiter = ",";
-		}
-        	
-        protobuf.User.ComputeResult result;
-        try {
-            result = blockingStub.compute(request.build());
-        } catch (StatusRuntimeException e) {
-            e.printStackTrace();
-            scanner.close();
-             return;
-        }
-       switch(result.getStatus()) {
-	case FAILURE:
-		System.err.println("Error: " + result.getFailureMessage());
-		break;
-	case INVALID_REQUEST:
-		System.err.println("Invalid Request: " + result.getFailureMessage());
-		break;
-	case SUCCESS:
-		System.err.println("Success!");
-		break;
-	default:
-		break;
-   
-       
-       
-       }
-       scanner.close();
-    }
-*/
-/*
-    public static void main(String[] args) throws Exception {
-        String target = "localhost:50051";  // Boilerplate TODO: make sure the server/port match the server/port you want to connect to
+    public DataStoreClient() {
+        String target = "localhost:50052"; 
 
         ManagedChannel channel = Grpc.newChannelBuilder(target, InsecureChannelCredentials.create())
                 .build();
-        try {
-            DataStoreClient client = new DataStoreClient(channel); // Boilerplate TODO: update to this class name
-            client.compute();
-        } finally {
-            channel.shutdownNow().awaitTermination(5, TimeUnit.SECONDS);
-        }
+        blockingStub = DataStoreAPIGrpc.newBlockingStub(channel);
+        
+   
     }
+    
+
+	@Override
+	public StorageKey storeData(StorageRequest storageRequest) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DataSearch retrieveData(StorageKey key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Integer> readIntegers(String inputLocation) {
+		// TODO Auto-generated method stub
+		List<Integer> integers = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputLocation))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                for (String s : line.split("\\s+")) {
+                    integers.add(Integer.parseInt(s));
+                }
+            }
+        } catch (IOException | NumberFormatException e) {
+            System.err.println("Failed to read integers: " + e.getMessage());
+        }
+        return integers;
+	
+	}
+
+	@Override
+	public void writeResult(String outputLocation, String result) {
+		// TODO Auto-generated method stub
+		 try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputLocation))) {
+	            writer.write(result);
+	        } catch (IOException e) {
+	            System.err.println("Failed to write result: " + e.getMessage());
+	        }
+		
+	}
 
 }
-*/
+
