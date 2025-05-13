@@ -24,12 +24,15 @@ class OpenAIIntegrationTest {
         when(mockConnection.getInputStream()).thenReturn(new ByteArrayInputStream(mockResponse.getBytes()));
         when(mockConnection.getOutputStream()).thenReturn(mock(OutputStream.class));
 
+        // Set expected method calls on mock
+        when(mockConnection.getRequestMethod()).thenReturn("POST");
+
         // Create an instance of OpenAIIntegration with the mock connection
         OpenAIIntegration openAIIntegration = new OpenAIIntegration("test_api_key", mockConnection);
 
         // Call the method and verify the result
         String result = openAIIntegration.getAIResponse("Hello", "text-davinci-003", 10);
-        assertEquals(mockResponse, result);
+        assertEquals("Hello, world!", result);
 
         // Verify interactions with the mock
         verify(mockConnection).setRequestMethod("POST");
