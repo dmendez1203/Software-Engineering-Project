@@ -11,7 +11,7 @@ public class DataStoreServer { // Boilerplate TODO: Change name of class
 
       private void start() throws IOException {
         /* The port on which the server should run */
-        int port = 50051; // Boilerplate TODO: Consider changing the port (only one server per port)
+        int port = 50052; // Boilerplate TODO: Consider changing the port (only one server per port)
         //2 servers, 2 clients
         server = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())
             .addService(new DataStoreServiceImpl()) // Boilerplate TODO: Change name of class
